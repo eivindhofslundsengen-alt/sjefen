@@ -7,177 +7,551 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-dark: #050608;
+      --bg-mid: #101218;
+      --accent: #f5b544;
+      --accent-soft: rgba(245,181,68,0.15);
+      --text-main: #f5f5f5;
+      --text-muted: #a0a4b0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #111;
-      color: #eee;
+      background: radial-gradient(circle at top, #1b1f2b 0, #050608 55%);
+      color: var(--text-main);
       line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      background: linear-gradient(to bottom, rgba(5,6,8,0.95), rgba(5,6,8,0.7), transparent);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .nav-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav-contact {
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .nav-contact strong {
+      color: var(--accent);
     }
 
     /* HERO */
     .hero {
-      height: 100vh;
-      background: url('images/arbeid.jpg') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      justify-content: center;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px;
+      padding: 120px 32px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
       align-items: center;
-      text-align: center;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-    }
-
-    .hero-content {
+    .hero-left {
       position: relative;
-      z-index: 2;
-      max-width: 900px;
-      padding: 20px;
-      animation: fadeIn 1.2s ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
     }
 
     .hero h1 {
-      font-size: 64px;
+      font-size: clamp(40px, 5vw, 56px);
       font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
     }
 
-    .hero p {
-      font-size: 24px;
-      font-weight: 300;
-      margin-bottom: 40px;
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 26px;
+    }
+
+    .hero-quote {
+      font-size: 15px;
+      color: var(--text-main);
       opacity: 0.9;
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+      margin-bottom: 30px;
     }
 
-    .btn {
-      background: #e6e6e6;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
       color: #111;
-      padding: 16px 40px;
-      border-radius: 8px;
-      font-size: 20px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 15px;
       font-weight: 600;
       text-decoration: none;
-      transition: 0.25s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: 0.2s;
     }
 
-    .btn:hover {
-      background: white;
-      transform: translateY(-3px);
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.7);
     }
 
-    /* SECTIONS */
-    section {
-      padding: 100px 20px;
+    .btn-ghost {
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.02);
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-right {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-card-main {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.8);
+    }
+
+    .hero-card-main img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.1) contrast(1.05);
+    }
+
+    .hero-card-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 16px 18px 18px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      font-size: 13px;
+    }
+
+    .hero-card-overlay strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .hero-mini-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .hero-mini {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .hero-mini img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-mini span {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 12px;
+      background: rgba(0,0,0,0.7);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* SECTION WRAPPER */
+    .section {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 80px 32px;
     }
 
-    h2 {
-      font-size: 38px;
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 30px;
       font-weight: 700;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #fff;
+      margin-bottom: 8px;
     }
 
-    .center-text {
-      text-align: center;
-      max-width: 800px;
-      margin: auto;
-      font-size: 20px;
-      color: #ccc;
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* GRID: HIGHLIGHTS */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .highlight-card {
+      background: radial-gradient(circle at top left, rgba(245,181,68,0.12), rgba(10,12,18,0.98));
+      border-radius: 16px;
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .highlight-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .highlight-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .highlight-text {
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
     /* GALLERY */
-    .gallery {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
     }
 
-    .gallery img {
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .gallery-item img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-      transition: 0.3s;
+      height: 220px;
+      object-fit: cover;
+      display: block;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
+    .gallery-tag {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 12px;
+      background: rgba(0,0,0,0.7);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
     }
 
     /* CONTACT */
     .contact {
-      background: #0d0d0d;
-      padding: 100px 20px;
+      background: linear-gradient(to bottom, #101218, #050608);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 40px;
+    }
+
+    .contact-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 32px 60px;
       text-align: center;
-      border-top: 1px solid #333;
     }
 
-    .contact p {
-      font-size: 22px;
-      margin: 8px 0;
-      color: #ddd;
+    .contact-inner h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
     }
 
-    .contact strong {
-      font-size: 26px;
-      color: #fff;
+    .contact-inner p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .contact-row strong {
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .contact-note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 110px;
+      }
+      .hero-right {
+        order: -1;
+      }
+      .nav {
+        padding: 14px 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 110px 18px 60px;
+      }
+      .section {
+        padding: 70px 18px;
+      }
+      .contact-inner {
+        padding: 60px 18px 50px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Hofslundsengen Fasadevask</h1>
-      <p>“Stao no pao – dama di vasker inne, så tek eg meg av vasken ute.”</p>
-      <a href="#kontakt" class="btn">Kontakt</a>
+  <!-- NAV -->
+  <header class="nav">
+    <div>
+      <div class="nav-logo">HOFSLUNDSENGEN</div>
+      <div class="nav-tagline">FASADEVASK • ARBEIDSKRAFT • PRESISJON</div>
     </div>
-  </div>
+    <div class="nav-contact">
+      <div><strong>941 50 708</strong></div>
+      <div>eivind.hofslundsengen@gmail.com</div>
+    </div>
+  </header>
 
-  <!-- OM -->
-  <section>
-    <h2>Rå arbeidskraft. Presist utført.</h2>
-    <p class="center-text">
-      Jeg leverer fasadevask, høytrykkspyling og utvendig vedlikehold med fokus på tempo, kvalitet og presisjon. 
-      Erfaring fra krevende oppdrag har gjort meg effektiv, strukturert og trygg i faget. 
-      Jeg møter opp, jobber hardt og leverer et resultat du kan stole på – hver eneste gang.
-    </p>
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-left">
+      <div class="hero-kicker">Rå arbeidskraft • Presist utført</div>
+      <h1>Fasadevask som tåler å bli målt på resultatet.</h1>
+      <p class="hero-sub">
+        Erfaring, tempo og strukturert arbeid ute på fasade. Jeg møter opp, leverer og dokumenterer – slik at du kan stole på jobben som blir gjort.
+      </p>
+      <div class="hero-quote">
+        “Stao no pao – dama di vasker inne, så tek eg meg av vasken ute.”
+      </div>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn-primary">Book en prat</a>
+        <a href="#arbeid" class="btn-ghost">Se arbeid og før/etter</a>
+      </div>
+      <div class="hero-meta">
+        <span>Fasadevask & høytrykk</span>
+        <span>Før/etter‑dokumentasjon</span>
+        <span>Innleie / samarbeid</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card-main">
+        <img src="images/arbeid.jpg" alt="Arbeid i gang på fasade">
+        <div class="hero-card-overlay">
+          <strong>På jobb ute – ikke bare på papiret.</strong>
+          Effektiv, strukturert og til å stole på når fasaden faktisk skal bli ren.
+        </div>
+      </div>
+      <div class="hero-mini-row">
+        <div class="hero-mini">
+          <img src="images/for.jpg" alt="Før vask">
+          <span>Før</span>
+        </div>
+        <div class="hero-mini">
+          <img src="images/etter.jpg" alt="Etter vask">
+          <span>Etter</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SEKSJON: PROFIL -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-kicker">Profil</div>
+      <div class="section-title">Arbeidskraft med fokus på kvalitet, tempo og presisjon.</div>
+      <div class="section-sub">
+        Jeg jobber ute på fasade – ikke bak et skrivebord. Målet er enkelt: levere arbeid som ser bra ut, holder over tid og gjør at du trygt kan sende meg ut til dine kunder.
+      </div>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="highlight-label">Arbeidsmoral</div>
+        <div class="highlight-title">Møter opp, står i det, fullfører.</div>
+        <div class="highlight-text">
+          Jeg er vant til fysisk arbeid, lange dager og krevende forhold. Jobben skal gjøres skikkelig – ikke halvveis.
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-label">Presisjon</div>
+        <div class="highlight-title">Detaljfokus på fasade og flater.</div>
+        <div class="highlight-text">
+          Jeg er nøye på overflater, overganger og helhetsinntrykk. Resultatet skal tåle både dagslys og nærblikk.
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-label">Samarbeid</div>
+        <div class="highlight-title">Innleie og faste samarbeid.</div>
+        <div class="highlight-text">
+          Jeg tilpasser meg rutiner, systemer og krav hos firmaet jeg jobber for. Struktur og kommunikasjon er en del av jobben.
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- GALLERI -->
-  <section>
-    <h2>Før og etter</h2>
-    <div class="gallery">
-      <img src="images/for.jpg" alt="Før vask">
-      <img src="images/etter.jpg" alt="Etter vask">
-      <img src="images/arbeid.jpg" alt="Arbeid i gang">
-      <img src="images/kamel.png" alt="Kamel">
+  <!-- SEKSJON: ARBEID / GALLERI -->
+  <section class="section" id="arbeid">
+    <div class="section-header">
+      <div class="section-kicker">Arbeid</div>
+      <div class="section-title">Før, etter og underveis.</div>
+      <div class="section-sub">
+        Bilder fra faktisk arbeid – ikke stock. Fasader som har gått fra slitt og skitten til ren og presentabel.
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/for.jpg" alt="Før fasadevask">
+        <div class="gallery-tag">Før vask</div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/etter.jpg" alt="Etter fasadevask">
+        <div class="gallery-tag">Etter vask</div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/arbeid.jpg" alt="Arbeid i gang">
+        <div class="gallery-tag">Arbeid i gang</div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/kamel.png" alt="Profil / identitet">
+        <div class="gallery-tag">Profil</div>
+      </div>
     </div>
   </section>
 
   <!-- KONTAKT -->
-  <div class="contact" id="kontakt">
-    <h2>Kontakt</h2>
-    <p><strong>📞 941 50 708</strong></p>
-    <p><strong>📧 eivind.hofslundsengen@gmail.com</strong></p>
-    <p>Ta kontakt for oppdrag, samarbeid eller innleie.</p>
-  </div>
+  <footer class="contact" id="kontakt">
+    <div class="contact-inner">
+      <h2>Kontakt for oppdrag eller samarbeid.</h2>
+      <p>
+        Enten du trenger ekstra kapasitet på fasadevask, faste oppdrag eller en som kan stå i de tunge dagene – ta kontakt.
+      </p>
+      <div class="contact-row">
+        <div><strong>Telefon:</strong> 941 50 708</div>
+        <div><strong>E‑post:</strong> eivind.hofslundsengen@gmail.com</div>
+      </div>
+      <div class="contact-note">
+        Kort prat, tydelige forventninger, så er vi i gang.
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

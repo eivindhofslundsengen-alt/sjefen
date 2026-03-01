@@ -1,126 +1,159 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hofslundsengen Kamelutleie</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #fafafa;
-            color: #222;
-        }
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: #ffffff;
-            border-bottom: 1px solid #ddd;
-        }
-        header img {
-            width: 180px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        h2 {
-            margin-top: 40px;
-            font-size: 26px;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-        .before-after {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .before-after img {
-            width: 48%;
-            min-width: 280px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #ffffff;
-            border-top: 1px solid #ddd;
-            margin-top: 40px;
-        }
-        footer img {
-            width: 80px;
-            opacity: 0.7;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hofslundsengen Kamelutleie & Fasadevask</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+      height: 90vh;
+      background: url('images/kamel.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: #ffffff;
+      color: #222;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* CONTACT */
+    .contact {
+      background: white;
+      padding: 80px 20px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+
+    .contact p {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <img src="images/kamel.png" alt="Kamel logo">
-    <h1>Hofslundsengen Kamelutleie</h1>
-    <p><strong>Stao no pao.</strong> Når dama di tar vasken inne – fikser eg vasken ute.</p>
-</header>
-
-<div class="container">
-
-    <h2>Hva jeg gjør</h2>
-    <p>
-        Jeg leier meg ut som arbeidskraft til bedrifter som driver med fasadevask, høytrykk, takvask og annet utendørs arbeid. 
-        Du stiller med utstyr – jeg stiller med arbeidskraft, erfaring og arbeidsmoral.
-    </p>
-
-    <h2>Før og etter behandling</h2>
-    <div class="before-after">
-        <img src="images/for.jpg" alt="Før behandling">
-        <img src="images/etter.jpg" alt="Etter behandling">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Hofslundsengen Kamelutleie</h1>
+      <p>Profesjonell fasadevask og eksotisk kamelopplevelse – levert med stolthet.</p>
+      <a href="#kontakt" class="btn">Kontakt oss</a>
     </div>
+  </div>
 
-    <h2>I arbeid</h2>
-    <img src="images/arbeid.jpg" alt="Arbeid på tak" style="width:100%; border-radius:8px; border:1px solid #ddd; margin-top:20px;">
+  <!-- OM -->
+  <section>
+    <h2>Våre tjenester</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      Vi tilbyr grundig fasadevask, høytrykkspyling og spesialoppdrag – kombinert med en unik og minneverdig kamelopplevelse. 
+      Kvalitet, trygghet og humor i perfekt balanse.
+    </p>
+  </section>
 
+  <!-- GALLERI -->
+  <section>
     <h2>Galleri</h2>
     <div class="gallery">
-        <img src="images/arbeid.jpg" alt="Arbeid">
-        <img src="images/for.jpg" alt="Før">
-        <img src="images/etter.jpg" alt="Etter">
+      <img src="images/for.jpg" alt="Før vask">
+      <img src="images/etter.jpg" alt="Etter vask">
+      <img src="images/arbeid.jpg" alt="Arbeid i gang">
+      <img src="images/kamel.png" alt="Kamel">
     </div>
+  </section>
 
-    <h2>Kontakt</h2>
-    <p>
-        Navn: <strong>Eivind Hofslundsengen</strong><br>
-        Telefon: <a href="tel:94150708">941 50 708</a><br>
-        E‑post: <a href="mailto:eivind.hofslundsengen@gmail.com">eivind.hofslundsengen@gmail.com</a><br>
-        Lokasjon: Bergen / Vestland<br>
-        Tilgjengelig: 08:00–20:00 alle dager
-    </p>
-
-</div>
-
-<footer>
-    <img src="images/kamel.png" alt="Kamel logo footer">
-    <p>© 2026 Hofslundsengen Kamelutleie – Seriøst arbeid, uforglemmelig branding.</p>
-</footer>
+  <!-- KONTAKT -->
+  <div class="contact" id="kontakt">
+    <h2>Kontakt oss</h2>
+    <p>📞 999 99 999</p>
+    <p>📧 post@hofslundsengen.no</p>
+  </div>
 
 </body>
 </html>

@@ -10,28 +10,27 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f5f5f5;
-      color: #222;
+      background: #111;
+      color: #eee;
       line-height: 1.6;
     }
 
     /* HERO */
     .hero {
-      height: 90vh;
+      height: 100vh;
       background: url('images/arbeid.jpg') center/cover no-repeat;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
       text-align: center;
-      color: white;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0,0,0,0.65);
     }
 
     .hero-content {
@@ -48,32 +47,33 @@
     }
 
     .hero h1 {
-      font-size: 58px;
+      font-size: 64px;
       font-weight: 800;
       margin-bottom: 10px;
+      letter-spacing: -1px;
     }
 
     .hero p {
       font-size: 24px;
-      margin-bottom: 30px;
       font-weight: 300;
+      margin-bottom: 40px;
+      opacity: 0.9;
     }
 
     .btn {
-      background: #ffffff;
-      color: #222;
+      background: #e6e6e6;
+      color: #111;
       padding: 16px 40px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 20px;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
       transition: 0.25s;
     }
 
     .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+      background: white;
+      transform: translateY(-3px);
     }
 
     /* SECTIONS */
@@ -84,10 +84,11 @@
     }
 
     h2 {
-      font-size: 40px;
+      font-size: 38px;
       font-weight: 700;
       text-align: center;
       margin-bottom: 20px;
+      color: #fff;
     }
 
     .center-text {
@@ -95,6 +96,7 @@
       max-width: 800px;
       margin: auto;
       font-size: 20px;
+      color: #ccc;
     }
 
     /* GALLERY */
@@ -107,30 +109,32 @@
 
     .gallery img {
       width: 100%;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
       transition: 0.3s;
     }
 
     .gallery img:hover {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
     /* CONTACT */
     .contact {
-      background: white;
+      background: #0d0d0d;
       padding: 100px 20px;
       text-align: center;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #333;
     }
 
     .contact p {
       font-size: 22px;
       margin: 8px 0;
+      color: #ddd;
     }
 
     .contact strong {
       font-size: 26px;
+      color: #fff;
     }
   </style>
 </head>
@@ -148,17 +152,17 @@
 
   <!-- OM -->
   <section>
-    <h2>Fasadevask utført med erfaring og presisjon</h2>
+    <h2>Rå arbeidskraft. Presist utført.</h2>
     <p class="center-text">
-      Jeg leverer profesjonell fasadevask, høytrykkspyling og utvendig vedlikehold for både private og bedrifter.
-      Arbeidet utføres grundig, effektivt og med et øye for detaljer – slik at du får et resultat som varer.
-      Erfaring, pålitelighet og kvalitet står i sentrum for hvert eneste oppdrag.
+      Jeg leverer fasadevask, høytrykkspyling og utvendig vedlikehold med fokus på tempo, kvalitet og presisjon. 
+      Erfaring fra krevende oppdrag har gjort meg effektiv, strukturert og trygg i faget. 
+      Jeg møter opp, jobber hardt og leverer et resultat du kan stole på – hver eneste gang.
     </p>
   </section>
 
   <!-- GALLERI -->
   <section>
-    <h2>Arbeid og resultater</h2>
+    <h2>Før og etter</h2>
     <div class="gallery">
       <img src="images/for.jpg" alt="Før vask">
       <img src="images/etter.jpg" alt="Etter vask">
@@ -172,7 +176,7 @@
     <h2>Kontakt</h2>
     <p><strong>📞 941 50 708</strong></p>
     <p><strong>📧 eivind.hofslundsengen@gmail.com</strong></p>
-    <p>Ta kontakt for et uforpliktende tilbud eller en prat om jobben du trenger utført.</p>
+    <p>Ta kontakt for oppdrag, samarbeid eller innleie.</p>
   </div>
 
 </body>
